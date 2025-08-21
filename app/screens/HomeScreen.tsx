@@ -28,12 +28,16 @@ export default function HomeScreen() {
         </View>
       </View>
 
+      
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={[styles.button, styles.newPresence]}>
+        <TouchableOpacity style={[styles.button, styles.newPresence]} activeOpacity={0.7}>
+          <MaterialIcons name="add-task" size={20} color="#fff" style={{ marginRight: 8 }} />
           <Text style={styles.buttonText}>New Presence</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, styles.history]}>
-          <Text style={styles.buttonText}>History</Text>
+
+        <TouchableOpacity style={[styles.button, styles.history]} activeOpacity={0.7}>
+          <MaterialIcons name="history" size={20} color="#333" style={{ marginRight: 8 }} />
+          <Text style={[styles.buttonText, { color: '#333' }]}>History</Text>
         </TouchableOpacity>
       </View>
 
@@ -89,16 +93,18 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   buttonContainer: {
-  width: '100%',
-  marginTop: 100,
-  paddingHorizontal: 16,
-  gap: 12, // si supporté sinon marginBottom sur chaque bouton
-},
+    width: '100%',
+    marginTop: 100,
+    paddingHorizontal: 16,
+    gap: 12, // si gap non supporté, utilise marginBottom sur chaque bouton
+    flexDirection: 'column',
+  },
   button: {
-    paddingVertical: 14,
-    borderRadius: 25,
+    flexDirection: 'row', // pour icône + texte côte à côte
     alignItems: 'center',
     justifyContent: 'center',
+    paddingVertical: 14,
+    borderRadius: 25,
     shadowColor: '#000',
     shadowOpacity: 0.1,
     shadowOffset: { width: 0, height: 2 },
@@ -109,12 +115,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#3d99f5',
   },
   history: {
-    backgroundColor: '#333',
+    backgroundColor: '#fff',
     borderWidth: 1,
     borderColor: '#ccc',
   },
   buttonText: {
-    color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
   },
