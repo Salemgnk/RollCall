@@ -18,3 +18,4 @@ export interface AttendanceSession {
     presentCount: number;
 }
 
+export type ScreenType = 'home' | 'attendance' | 'history' | 'students' | 'settings';

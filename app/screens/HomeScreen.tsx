@@ -1,7 +1,8 @@
 import { StyleSheet, Text, View } from "react-native";
 import { Button } from "@react-navigation/elements";
 import { TouchableOpacity } from "react-native";
-import { MaterialIcons } from '@expo/vector-icons'; 
+import { MaterialIcons } from '@expo/vector-icons';
+import { CircularProgress } from "../components/CircularProgress";
 
 export default function HomeScreen() {
   const date = new Date().toDateString();
@@ -13,7 +14,7 @@ export default function HomeScreen() {
       <Text style={styles.title}>RollCall</Text>
       <Text style={styles.date}>Today is : {date}</Text>
 
-      <View style={styles.statsContainer}>
+      {/* <View style={styles.statsContainer}>
         <View style={[styles.card, { borderLeftColor: '#3b82f6' }]}>
           <Text style={styles.cardTitle}>Total Students</Text>
           <Text style={styles.cardNumber}>{totalStudents}</Text>
@@ -26,7 +27,8 @@ export default function HomeScreen() {
           <Text style={styles.cardTitle}>Absent Students</Text>
           <Text style={styles.cardNumber}>{totalStudents - presentStudents}</Text>
         </View>
-      </View>
+      </View> */}
+      <CircularProgress percentage={(presentStudents / totalStudents) * 100} />
 
       
       <View style={styles.buttonContainer}>
