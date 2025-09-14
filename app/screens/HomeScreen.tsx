@@ -1,7 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
-import { Button } from "@react-navigation/elements";
-import { TouchableOpacity } from "react-native";
 import { MaterialIcons } from '@expo/vector-icons';
+import { router } from 'expo-router';
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { CircularProgress } from "../components/CircularProgress";
 
 export default function HomeScreen() {
@@ -22,6 +21,15 @@ export default function HomeScreen() {
         <TouchableOpacity style={[styles.button, styles.newPresence]} activeOpacity={0.7}>
           <MaterialIcons name="add-task" size={20} color="#fff" style={{ marginRight: 8 }} />
           <Text style={styles.buttonText}>New Presence</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity 
+          style={[styles.button, styles.history]} 
+          activeOpacity={0.7}
+          onPress={() => router.push('/history' as any)}
+        >
+          <MaterialIcons name="history" size={20} color="#333" style={{ marginRight: 8 }} />
+          <Text style={[styles.buttonText, { color: '#333' }]}>History</Text>
         </TouchableOpacity>
       </View>
 
@@ -60,10 +68,7 @@ const styles = StyleSheet.create({
     borderLeftWidth: 4,
     borderRadius: 12,
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 4,
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
     elevation: 3,
     minWidth: 100,
   },
@@ -80,7 +85,7 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop: 100,
     paddingHorizontal: 16,
-    gap: 12, // si gap non supporté, utilise marginBottom sur chaque bouton
+    gap: 12,
     flexDirection: 'column',
   },
   button: {
@@ -89,10 +94,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingVertical: 14,
     borderRadius: 25,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 4,
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
     elevation: 3,
   },
   newPresence: {

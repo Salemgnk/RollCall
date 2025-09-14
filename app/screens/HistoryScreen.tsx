@@ -1,8 +1,9 @@
 import { MaterialIcons } from '@expo/vector-icons';
+import { router } from 'expo-router';
 import React, { useState } from "react";
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { AttendanceSession } from "../../types";
 import SessionDetailScreen from "./SessionDetailScreen";
-import { AttendanceSession } from "./types";
 
 // Mock data for demonstration
 const mockSessions: AttendanceSession[] = [
@@ -115,8 +116,14 @@ export default function HistoryScreen() {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Text style={styles.title}>Attendance History</Text>
-                <Text style={styles.subtitle}>Tap on a session to view details</Text>
+                <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
+                    <MaterialIcons name="arrow-back" size={24} color="#333" />
+                </TouchableOpacity>
+                <View style={styles.headerContent}>
+                    <Text style={styles.title}>Attendance History</Text>
+                    <Text style={styles.subtitle}>Tap on a session to view details</Text>
+                </View>
+                <View style={styles.placeholder} />
             </View>
             
             <FlatList
@@ -136,12 +143,22 @@ const styles = StyleSheet.create({
         backgroundColor: '#f8fafc'
     },
     header: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
         paddingTop: 60,
         paddingHorizontal: 20,
         paddingBottom: 20,
         backgroundColor: '#fff',
         borderBottomWidth: 1,
         borderBottomColor: '#e2e8f0'
+    },
+    backButton: {
+        padding: 8
+    },
+    headerContent: {
+        flex: 1,
+        alignItems: 'center'
     },
     title: {
         fontSize: 28,
@@ -153,6 +170,9 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: '#718096'
     },
+    placeholder: {
+        width: 40
+    },
     listContainer: {
         padding: 16
     },
@@ -163,10 +183,7 @@ const styles = StyleSheet.create({
         marginBottom: 12,
         flexDirection: 'row',
         alignItems: 'center',
-        shadowColor: '#000',
-        shadowOpacity: 0.1,
-        shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 4,
+        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
         elevation: 3
     },
     dateContainer: {

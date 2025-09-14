@@ -1,7 +1,7 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import React from "react";
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { AttendanceSession } from "./types";
+import { AttendanceSession } from "../../types";
 
 interface SessionDetailScreenProps {
     session: AttendanceSession;
@@ -153,10 +153,7 @@ const styles = StyleSheet.create({
         borderRadius: 12,
         padding: 20,
         marginBottom: 16,
-        shadowColor: '#000',
-        shadowOpacity: 0.1,
-        shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 4,
+        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
         elevation: 3
     },
     dateSection: {
@@ -187,10 +184,7 @@ const styles = StyleSheet.create({
         borderRadius: 12,
         padding: 16,
         alignItems: 'center',
-        shadowColor: '#000',
-        shadowOpacity: 0.1,
-        shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 4,
+        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
         elevation: 3
     },
     statHeader: {
@@ -217,10 +211,7 @@ const styles = StyleSheet.create({
         borderRadius: 12,
         padding: 20,
         marginBottom: 16,
-        shadowColor: '#000',
-        shadowOpacity: 0.1,
-        shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 4,
+        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
         elevation: 3
     },
     summaryTitle: {
@@ -249,10 +240,7 @@ const styles = StyleSheet.create({
         borderRadius: 12,
         padding: 20,
         marginBottom: 16,
-        shadowColor: '#000',
-        shadowOpacity: 0.1,
-        shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 4,
+        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
         elevation: 3
     },
     progressTitle: {
@@ -282,10 +270,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderRadius: 12,
         padding: 20,
-        shadowColor: '#000',
-        shadowOpacity: 0.1,
-        shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 4,
+        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
         elevation: 3
     },
     infoItem: {
