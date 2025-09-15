@@ -1,20 +1,21 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { studentStorage } from "../../utils/studentStorage";
 import { CircularProgress } from "../components/CircularProgress";
 
 export default function HomeScreen() {
   const date = new Date().toDateString();
-  const totalStudents = 46;
-  const presentStudents = 30;
+  const totalStudents = studentStorage.getTotalCount();
+  const presentStudents = Math.floor(totalStudents * 0.8); // Demo: 80% attendance rate
   
   return (
     <View style={styles.container}>
       <Text style={styles.title}>RollCall</Text>
       <Text style={styles.date}>Today is : {date}</Text>
+      <Text style={styles.studentCount}>Total Students: {totalStudents}</Text>
 
-
-      <CircularProgress percentage={(presentStudents / totalStudents) * 100} />
+      <CircularProgress percentage={totalStudents > 0 ? (presentStudents / totalStudents) * 100 : 0} />
 
       
       <View style={styles.buttonContainer}>
@@ -31,6 +32,14 @@ export default function HomeScreen() {
           <MaterialIcons name="history" size={20} color="#333" style={{ marginRight: 8 }} />
           <Text style={[styles.buttonText, { color: '#333' }]}>History</Text>
         </TouchableOpacity>
+         <TouchableOpacity 
+           style={[styles.button, styles.history]} 
+           activeOpacity={0.7}
+           onPress={() => router.push('/import-students' as any)}
+         >
+           <MaterialIcons name="upload-file" size={20} color="#333" style={{ marginRight: 8 }} />
+           <Text style={[styles.buttonText, { color: '#333' }]}>Import Students List</Text>
+         </TouchableOpacity>
       </View>
 
     </View>
@@ -52,6 +61,12 @@ const styles = StyleSheet.create({
   date: {
     fontSize: 16,
     color: '#555',
+    marginBottom: 8
+  },
+  studentCount: {
+    fontSize: 14,
+    color: '#3d99f5',
+    fontWeight: '600',
     marginBottom: 20
   },
   statsContainer: {
